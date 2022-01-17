@@ -4,8 +4,15 @@ import 'package:mars_rover/engine.dart';
 class MarsRover {
   MarsRover(Engine engine, Compass compass);
 
+  int x = 0;
+  int y = 0;
+
   String move(String commands) {
-    if (commands == "M") return "0:1:N";
-    return "0:0:N";
+    commands.split('').forEach((command) {
+      if (command == "M") {
+        y += 1;
+      }
+    });
+    return "$x:$y:N";
   }
 }
