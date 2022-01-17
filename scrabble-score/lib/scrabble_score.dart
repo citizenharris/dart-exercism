@@ -6,11 +6,11 @@ int score(String word) {
 
 int getScoreBy(String letter) {
   final upperCaseLetter = letter.toUpperCase();
-  if (!_scoresMap.containsKey(upperCaseLetter)) {
-    throw ArgumentError("Unrecognised letter");
+  if (_scoresMap.containsKey(upperCaseLetter)) {
+    // The value from _scoresMap is nullable so use bang to force it
+    return _scoresMap[upperCaseLetter]!;
   }
-  // The value from _scoresMap is nullable so use bang to force it
-  return _scoresMap[upperCaseLetter]!;
+  throw ArgumentError("Unrecognised letter");
 }
 
 const _scoresMap = <String, int>{
