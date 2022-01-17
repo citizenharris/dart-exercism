@@ -43,5 +43,3 @@ doc/api/
 .exercism
 
 # End of https://www.toptal.com/developers/gitignore/api/dart,exercism
-
-**/HELP.md
