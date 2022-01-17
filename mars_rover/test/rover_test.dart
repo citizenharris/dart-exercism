@@ -8,4 +8,9 @@ void main() {
     var rover = MarsRover(Engine(), Compass());
     expect(rover.move(""), "0:0:N");
   });
+
+  test("Rover should move forward 1 square", () {
+    var rover = MarsRover(Engine(), Compass());
+    expect(rover.move("M"), "0:1:N");
+  });
 }
