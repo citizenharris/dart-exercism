@@ -2,38 +2,40 @@ import 'package:mars_rover/compass.dart';
 import 'package:mars_rover/engine.dart';
 
 class MarsRover {
-  MarsRover(Engine engine, Compass compass);
+  Compass compass;
+
+  MarsRover(Engine engine, this.compass);
 
   int x = 0;
   int y = 0;
-  String direction = Direction.north();
 
   String move(String commands) {
     commands.split('').forEach((command) {
-      if (isMove(command)) {
+      if (_isMove(command)) {
         y += 1;
       }
-      if (command == "L") {
-        direction = Direction.west();
+      if (_isLeft(command)) {
+        compass.turnLeft();
+      }
+      if (_isRight(command)) {
+        compass.turnRight();
       }
     });
-    return "$x:$y:$direction";
+    return "$x:$y:${compass.getDirection()}";
   }
 
-  isMove(String command) {
+  _isMove(String command) {
     const MOVE = "M";
     return command == MOVE;
   }
 
-  isLeftCommand(String command) {
+  _isLeft(String command) {
     const LEFT = "L";
     return command == LEFT;
   }
-}
 
-
-class Direction {
-  static String north() => "N";
-
-  static String west() => "W";
+  _isRight(String command) {
+    const RIGHT = "R";
+    return command == RIGHT;
+  }
 }
