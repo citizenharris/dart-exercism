@@ -29,6 +29,8 @@ class Compass {
     }
   }
 
+  Compass.normal() : _currentDirection = Direction.north;
+
   getDirection() => _directionToString(_currentDirection);
 
   turnLeft() {

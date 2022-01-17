@@ -1,8 +1,6 @@
-import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mars_rover/compass.dart';
-import 'package:mars_rover/directions.dart';
 import 'package:mars_rover/engine.dart';
 import 'package:mars_rover/mars_rover.dart';
 
@@ -10,7 +8,7 @@ void main() {
   group("Mars Rover unit tests", () {
     late MarsRover northFacingRover;
     setUp(() {
-      northFacingRover = MarsRover(Engine(), Compass(Direction.north));
+      northFacingRover = MarsRover(Engine(), Compass.normal());
     });
     test("Rover should initialise facing North", () {
       expect(northFacingRover.move(""), "0:0:N");
