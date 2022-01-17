@@ -1,7 +1,16 @@
 int score(String word) {
   return word
       .split('')
-      .fold(0, (score, letter) => score += _scoresMap[letter]!);
+      .fold(0, (score, letter) => score += getScoreBy(letter));
+}
+
+int getScoreBy(String letter) {
+  final upperCaseLetter = letter.toUpperCase();
+  if (!_scoresMap.containsKey(upperCaseLetter)) {
+    throw ArgumentError("Unrecognised letter");
+  }
+  // The value from _scoresMap is nullable so use bang to force it
+  return _scoresMap[upperCaseLetter]!;
 }
 
 const _scoresMap = <String, int>{
