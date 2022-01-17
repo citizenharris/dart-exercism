@@ -1,13 +1,7 @@
 int score(String word) {
-  var score = 0;
-  word.split('').forEach((char) {
-    score += _get_score_by(char);
-  });
-  return score;
-}
-
-int _get_score_by(String char) {
-  return _scoresMap[char.toUpperCase()]!; // ?? throw ArgumentError("Unrecognised character");
+  return word
+      .split('')
+      .fold(0, (score, letter) => score += _scoresMap[letter]!);
 }
 
 const _scoresMap = <String, int>{
