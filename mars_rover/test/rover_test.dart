@@ -13,12 +13,21 @@ void main() {
       expect(rover.move(""), "0:0:N");
     });
 
-    var inputsToExpected = {
+    var movementInputToExpect = {
       "M": "0:1:N",
       "MM": "0:2:N"
     };
-    inputsToExpected.forEach((input, expected) {
+    movementInputToExpect.forEach((input, expected) {
       test("Rover can move: given `$input` -> $expected", () {
+        expect(rover.move(input), expected);
+      });
+    });
+
+    var directionInputToExpect = {
+      "L": "0:0:W"
+    };
+    directionInputToExpect.forEach((input, expected) {
+      test("Rover can turn: given `$input` -> $expected", () {
         expect(rover.move(input), expected);
       });
     });
